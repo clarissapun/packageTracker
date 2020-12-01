@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="PackageTracker.jar" size="111326" download="eager" />
+    <jar href="PackageTracker.jar" size="111372" download="eager" />
     <jar href="lib/derbyclient.jar" size="587986" download="eager" />
     <jar href="lib/javax.persistence-2.1.0.jar" size="162126" download="eager" />
     <jar href="lib/org.eclipse.persistence.antlr-2.5.2.jar" size="189645" download="eager" />
@@ -17,6 +17,6 @@
     <jar href="lib/org.eclipse.persistence.jpa-2.5.2.jar" size="1364245" download="eager" />
     <jar href="lib/org.eclipse.persistence.jpa.jpql-2.5.2.jar" size="1366247" download="eager" />
   </resources>
-  <jfx:javafx-desc  width="800" height="600" main-class="punfxml.PunFXML"  name="PackageTracker" />
+  <jfx:javafx-desc  width="800" height="600" main-class="packagetracker.packageTracker"  name="PackageTracker" />
   <update check="always"/>
 </jnlp>
