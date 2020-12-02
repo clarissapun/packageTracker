@@ -470,10 +470,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     void showDetails(ActionEvent event) throws IOException {
         Packages selected = packageTable.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));
         Parent detailedModelView = loader.load();
         Scene tableViewScene = new Scene(detailedModelView);
-        DetailedModelViewController detailedController = loader.getController();
+        PackageDetailViewController detailedController = loader.getController();
 
         detailedController.initData(selected);
 
@@ -490,7 +490,7 @@ public class FXMLDocumentController implements Initializable {
 
         Parent detailedModelView = loader.load();
         Scene tableViewScene = new Scene(detailedModelView);
-        DetailedModelViewController detailedControlled = loader.getController();
+        PackageDetailViewController detailedControlled = loader.getController();
         detailedControlled.initData(selected);
 
         Scene currentScene = ((Node) event.getSource()).getScene();

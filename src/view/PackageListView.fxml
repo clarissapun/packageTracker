@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,14 +10,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="985.0" prefWidth="414.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="985.0" prefWidth="414.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PackageListController">
    <children>
-      <ImageView fx:id="accountProfile" fitHeight="45.0" fitWidth="47.0" layoutX="343.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../Downloads/profile.png" />
-         </image>
-      </ImageView>
       <Text layoutX="14.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Currently Tracking">
          <font>
             <Font size="36.0" />
@@ -76,10 +71,13 @@
       </Text>
       <Line endX="207.0" layoutX="207.0" layoutY="266.0" startX="-207.0" stroke="#c6c6c6" />
       <ScrollBar fx:id="scrollBar" layoutX="400.0" layoutY="81.0" orientation="VERTICAL" prefHeight="903.0" prefWidth="14.0" />
-      <Button fx:id="addPackageButton" layoutX="160.0" layoutY="298.0" mnemonicParsing="false" text="Add Package">
+      <Button fx:id="addPackageButton" layoutX="157.0" layoutY="313.0" mnemonicParsing="false" text="Add Package">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
+      <ImageView fx:id="userProfile" fitHeight="65.0" fitWidth="85.0" layoutX="333.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="profileButton" layoutX="319.0" mnemonicParsing="false" onAction="#goToProfile" prefHeight="78.0" prefWidth="92.0" text="Profile" />
+      <ListView fx:id="pacakgeList" layoutX="41.0" layoutY="357.0" prefHeight="325.0" prefWidth="326.0" />
    </children>
 </AnchorPane>
