@@ -37,6 +37,8 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Packages;
 
+//current error showing up in FXMLDocumentController.java and PackageListcontroller.java
+//package javax.persistence does not exist
 public class PackageListController implements Initializable {
 
     @FXML
