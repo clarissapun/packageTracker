@@ -448,8 +448,9 @@ public class FXMLDocumentController implements Initializable {
             alert.setContentText("No package(s)");
             alert.showAndWait();
         }else{
+            packageTable.getItems().clear();
             packageTable.getItems().add(pkg);
-
+            packageTable.refresh();
         }
         //packageTable.getColumns().addAll(tableID, tableCompany, tableToAddress, tableFromAddress);
     }

@@ -1,12 +1,14 @@
 package controller; 
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -54,9 +56,18 @@ public class AddPackageViewController implements Initializable {
         p.setCompany(company);
         p.setFromaddress(fromaddress);
         p.setToaddress(toaddress);
+        try{
         manager.getTransaction().begin();  
         manager.persist(p);
         manager.getTransaction().commit();
+        }catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!");
+            alert.setHeaderText("Could not add package");
+            alert.setContentText("package was already added or information is incorrect, try again");
+            alert.showAndWait();
+       
+        }
     }
     
     @FXML
