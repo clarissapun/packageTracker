@@ -66,17 +66,20 @@ public class PackageListController implements Initializable {
 
     @FXML
     void goToProfile(ActionEvent event) {
-
+        displayData();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         manager = (EntityManager) Persistence.createEntityManagerFactory("PunFXMLPU").createEntityManager();
+        displayData();
+    }
+    private void displayData(){
         ObservableList<Packages> data = FXCollections.observableArrayList();
         List<Packages> pkgs = readAll();
         pkgs.forEach(pkg -> data.add(pkg));
         pacakgeList = new ListView<Packages>(data);
-        //pacakgeList.setItems(data);
+        pacakgeList.setItems(data);
         pacakgeList.setCellFactory(pkg -> new PackageListViewCell());
         addListeners();
     }
@@ -114,11 +117,11 @@ public class PackageListController implements Initializable {
 ///////////to reset stage/scene
 
     public void ss(Stage primaryStage) {
-
-        //StackPane root = new StackPane();
-        //root.getChildren().add(pacakgeList);
-        //primaryStage.setScene(new Scene(root));
-        //primaryStage.show();
+/*
+        StackPane root = new StackPane();
+        root.getChildren().add(pacakgeList);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();*/
     }
 
     private class PackageListViewCell extends ListCell<Packages> {
