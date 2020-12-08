@@ -540,7 +540,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     void showDetailsPlace(ActionEvent event) throws IOException {
         Packages selected = packageTable.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));
 
         Parent detailedModelView = loader.load();
         Scene tableViewScene = new Scene(detailedModelView);
