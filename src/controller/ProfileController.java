@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import model.Packages;
 
 /**
  * FXML Controller class
@@ -26,6 +27,8 @@ import javax.persistence.Persistence;
  */
 public class ProfileController implements Initializable {
 
+    private EntityManager manager;
+    
     @FXML
     private ResourceBundle resources;
 
@@ -62,10 +65,30 @@ public class ProfileController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        manager = (EntityManager) Persistence.createEntityManagerFactory("PunFXMLPU").createEntityManager();
     }    
     @FXML
-    void editUser(ActionEvent event) {
-        
+    void editUser(Packages user) {
+                try {
+
+            Packages existingPkg = manager.find(Packages.class, user.getId());
+
+            if (existingPkg != null) {
+                // begin transaction
+                manager.getTransaction().begin();
+
+                // update all atttributes
+                existingPkg.setId(user.getId());
+                existingPkg.setCompany(user.getCompany());
+                existingPkg.setToaddress(user.getToaddress());
+                existingPkg.setFromaddress(user.getFromaddress());
+
+                // end transaction
+                manager.getTransaction().commit();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void setPreviousScene(Scene scene) {
