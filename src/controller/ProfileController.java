@@ -10,9 +10,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -52,7 +55,8 @@ public class ProfileController implements Initializable {
 
     @FXML
     private Button editButton;
-
+    
+    Scene previousScene;
     /**
      * Initializes the controller class.
      */
@@ -61,12 +65,24 @@ public class ProfileController implements Initializable {
     }    
     @FXML
     void editUser(ActionEvent event) {
-
+        
     }
 
+    public void setPreviousScene(Scene scene) {
+        previousScene = scene;
+        backButton.setDisable(false);
+
+    }
     @FXML
     void goBack(ActionEvent event) {
-
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+        //  option 2: get current stage -- from backbutton        
+        // Stage stage = (Stage)backButton.getScene().getWindow();
+        
+        if (previousScene != null) {
+            stage.setScene(previousScene);
+        }
     }
 
     @FXML

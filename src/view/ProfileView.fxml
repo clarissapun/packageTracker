@@ -40,7 +40,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
+<View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
    <top>
       <AnchorPane prefHeight="158.0" prefWidth="335.0" BorderPane.alignment="CENTER">
          <children>
@@ -98,6 +98,10 @@
             </Text>
             <Button fx:id="backButton" layoutX="197.0" layoutY="283.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
             <Button fx:id="editButton" layoutX="91.0" layoutY="283.0" mnemonicParsing="false" onAction="#editUser" text="Edit" />
+            <Text fx:id="nameText" layoutX="130.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jane Doe" />
+            <Text fx:id="addressText" layoutX="130.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="123 Apple Street" />
+            <Text fx:id="phoneText" layoutX="130.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="123-456-7890" />
+            <Text fx:id="emailText" layoutX="128.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="janedoe123@work.com" />
          </children>
       </AnchorPane>
    </center>
