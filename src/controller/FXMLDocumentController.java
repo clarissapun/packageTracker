@@ -139,31 +139,21 @@ public class FXMLDocumentController implements Initializable {
         tableToAddress.setCellValueFactory(new PropertyValueFactory<>("toaddress"));
         tableFromAddress.setCellValueFactory(new PropertyValueFactory<>("fromaddress"));
     }
-    
+    /*nvm I think I got it*/
     void goToProf(ActionEvent event) throws IOException{
+        Users selected = userTable.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ProfileView.fxml"));
         Parent detailedModelView = loader.load();
-        Scene tableviewScene = new Scene(profileScene);
-        Stage stage = new Stage();
-        stage.setScene(profileScene);
-        stage.show();
-    }
-    /*
-        @FXML
-    void showDetails(ActionEvent event) throws IOException {
-        Packages selected = packageTable.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));
-        Parent detailedModelView = loader.load();
-        Scene tableViewScene = new Scene(detailedModelView);
-        PackageDetailViewController detailedController = loader.getController();
-
+        Scene profileViewScene = new Scene(detailedModelView);
+        ProfileController detailedController = loader.getController();
+        
         detailedController.initData(selected);
-
-        // create a new state
+        
         Stage stage = new Stage();
-        stage.setScene(tableViewScene);
+        stage.setScene(profileViewScene);
         stage.show();
+        
     }
-    */
     /*
     Implementing CRUD operations
      */
