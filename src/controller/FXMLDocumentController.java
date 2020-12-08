@@ -98,7 +98,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button showDetailsB;
+    
+    @FXML
+    private Button profileButton;
 
+    Scene profileScene;
     private ObservableList<Packages> pkgData;
 
     @FXML
@@ -115,6 +119,52 @@ public class FXMLDocumentController implements Initializable {
         tableToAddress.setCellValueFactory(new PropertyValueFactory<>("toaddress"));
         tableFromAddress.setCellValueFactory(new PropertyValueFactory<>("fromaddress"));
     }
+    
+    void goToProf(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Packages selected = packageTable.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Profileview.fxml"));
+        Parent detailedModelView = loader.load();
+        Scene tableViewScene = new Scene(detailedModelView);
+        ProfileController detailedController = loader.getController();
+        
+        detailedController.initData(selected);
+        stage.setScene(profileScene);
+        
+        //create new stage
+        //Stage stage = new Stage();
+        stage.setScene(profileScene);
+        stage.show();
+        }
+    
+    public void setPreviousScene(Scene scene) {
+        profileScene = scene;
+        profileButton.setDisable(false);
+    }
+    @FXML
+    void goToProfile(ActionEvent event) {
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+        //  option 2: get current stage -- from backbutton        
+        // Stage stage = (Stage)backButton.getScene().getWindow();
+        
+        if (profileScene != null) {
+            stage.setScene(profileScene);
+        }
+    }
+            
+    /*        Packages selected = packageTable.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));
+        Parent detailedModelView = loader.load();
+        Scene tableViewScene = new Scene(detailedModelView);
+        PackageDetailViewController detailedController = loader.getController();
+
+        detailedController.initData(selected);
+
+        // create a new state
+        Stage stage = new Stage();
+        stage.setScene(tableViewScene);
+        stage.show();*/
 
     /*
     Implementing CRUD operations

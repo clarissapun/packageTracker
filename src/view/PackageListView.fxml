@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="393.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="393.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="150.0" layoutY="98.0" minHeight="16" minWidth="69" />
       <Button fx:id="readPackages" layoutX="45.0" layoutY="24.0" mnemonicParsing="false" onAction="#readPackages" prefHeight="27.0" prefWidth="115.0" text="Display Packages" />
@@ -29,5 +29,6 @@
       <TextField fx:id="findCompany" layoutX="97.0" layoutY="111.0" />
       <Button fx:id="showDetailsP" layoutX="146.0" layoutY="355.0" mnemonicParsing="false" onAction="#showDetailsPlace" text="Show Details in-Place" />
       <Button fx:id="showDetailsB" layoutX="291.0" layoutY="355.0" mnemonicParsing="false" onAction="#showDetails" text="Show Details" />
+      <Button fx:id="profileButton" layoutX="55.0" layoutY="355.0" mnemonicParsing="false" onAction="#goToProf" text="Profile" />
     </children>
 </AnchorPane>

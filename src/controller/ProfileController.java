@@ -13,13 +13,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import model.Packages;
+import model.Users;
 
 /**
  * FXML Controller class
@@ -62,6 +63,19 @@ public class ProfileController implements Initializable {
 
     Scene previousScene;
     
+    private Users user;
+    @FXML
+    private Label username;
+    @FXML
+    private Label name;
+    @FXML
+    private Label address;
+    @FXML
+    private Label phoneNum;
+    @FXML
+    private Label email;
+ 
+    
     
     
     /**
@@ -96,7 +110,7 @@ public class ProfileController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-
+/*
     public void setPreviousScene(Scene scene) {
         previousScene = scene;
         backButton.setDisable(false);
@@ -113,7 +127,7 @@ public class ProfileController implements Initializable {
             stage.setScene(previousScene);
         }
     }
-
+*/
     @FXML
     void initialize() {
         assert usernameText != null : "fx:id=\"usernameText\" was not injected: check your FXML file 'ProfileView.fxml'.";
@@ -125,6 +139,16 @@ public class ProfileController implements Initializable {
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ProfileView.fxml'.";
         assert editButton != null : "fx:id=\"editButton\" was not injected: check your FXML file 'ProfileView.fxml'.";
 
+    }
+
+    void initData(Users selected) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        user = users;
+        username.setText(users.getUsername().toString());
+        name.setText(users.getName().toString());
+        address.setText(users.getAddress.toString());
+        phoneNum.setText(users.getPhoneNum.toString());
+        email.setText(users.getEmail.toString());
     }
 }
 

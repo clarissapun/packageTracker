@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
     , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
-    , @NamedQuery(name = "Users.findByFname", query = "SELECT u FROM Users u WHERE u.fname = :fname")
-    , @NamedQuery(name = "Users.findByLname", query = "SELECT u FROM Users u WHERE u.lname = :lname")
+    , @NamedQuery(name = "Users.findByName", query = "SELECT u FROM Users u WHERE u.name = :name")
+    , @NamedQuery(name = "Users.findByPhoneNum", query = "SELECT u FROM Users u WHERE u.phoneNum = :phoneNum")
     , @NamedQuery(name = "Users.findByAddress", query = "SELECT u FROM Users u WHERE u.address = :address")
     , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")})
 public class Users implements Serializable {
@@ -36,10 +36,10 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @Column(name = "USERNAME")
     private String username;
-    @Column(name = "FNAME")
-    private String fname;
-    @Column(name = "LNAME")
-    private String lname;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "PHONENUM")
+    private String phoneNum;
     @Column(name = "ADDRESS")
     private String address;
     @Column(name = "EMAIL")
@@ -60,20 +60,20 @@ public class Users implements Serializable {
         this.username = username;
     }
 
-    public String getFname() {
-        return fname;
+    public String getName() {
+        return name;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setName(String fname) {
+        this.name = fname;
     }
 
-    public String getLname() {
-        return lname;
+    public String getPhoneNum() {
+        return phoneNum;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setPhoneNum(String lname) {
+        this.phoneNum = phoneNum;
     }
 
     public String getAddress() {
@@ -116,5 +116,6 @@ public class Users implements Serializable {
     public String toString() {
         return "model.Users[ username=" + username + " ]";
     }
+
     
 }

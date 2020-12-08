@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -57,6 +58,8 @@ public class PackageListController implements Initializable {
 
     @FXML
     private Button profileButton;
+    
+    Scene profileScene;
 
     @FXML
     private ListView<Packages> pacakgeList;
@@ -67,6 +70,22 @@ public class PackageListController implements Initializable {
     @FXML
     void goToProfile(ActionEvent event) {
         displayData();
+    }
+        public void setPreviousScene(Scene scene) {
+        profileScene = scene;
+        profileButton.setDisable(false);
+
+    }
+    @FXML
+    void goBack(ActionEvent event) {
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+        //  option 2: get current stage -- from backbutton        
+        // Stage stage = (Stage)backButton.getScene().getWindow();
+        
+        if (profileScene != null) {
+            stage.setScene(profileScene);
+        }
     }
 
     @Override

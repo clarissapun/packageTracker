@@ -8,6 +8,7 @@
     <class>model.Littlemap</class>
     <class>model.Bigmap</class>
     <class>model.International</class>
+    <class>model.Users</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/gp4_db;create=true"/>
       <property name="javax.persistence.jdbc.user" value="APP"/>
