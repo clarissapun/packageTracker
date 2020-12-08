@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/view/PackageListView.fxml</file>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/view/ProfileView.fxml</file>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/model/Littlemap.java</file>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/packagetracker/packageTracker.java</file>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/AddPackageViewController.java</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/controller/PackageDetailViewController.java</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/view/AddPackageView.fxml</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/controller/PackageListController.java</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/view/LittleMapView.fxml</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/controller/ProfileController.java</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/view/ProfileView.fxml</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/view/PackageListView.fxml</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/controller/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/packagetracker/packageTracker.java</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/view/BigMapView.fxml</file>
+            <file>file:/C:/Users/Owner/Documents/NetBeansProjects/packageTracker/src/META-INF/persistence.xml</file>
         </group>
     </open-files>
 </project-private>
