@@ -13,59 +13,48 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import model.Packages;
 import model.Users;
 
 public class LoginViewController {
+    private EntityManager manager;
 
     @FXML
-    private ResourceBundle resources;
+    private TextField username;
 
     @FXML
-    private URL location;
-
-    @FXML
-    private Label username;
-
-    @FXML
-    private Label password;
+    private TextField password;
 
     @FXML
     private Button loginButton;
     
-    @FXML
     private TableView<Packages> packageTable;
 
-    @FXML
-    private TableColumn<Packages, Integer> tableID = new TableColumn<>("id");
-
-    @FXML
-    private TableColumn<Packages, String> tableCompany = new TableColumn<>("company");
-
-    @FXML
-    private TableColumn<Packages, String> tableToAddress = new TableColumn<>("to address");
-
-    @FXML
-    private TableColumn<Packages, String> tableFromAddress = new TableColumn<>("from address");
     
     
     Scene homepageScene;
+    @FXML
+    private Button createButton;
 
     @FXML
     void login(ActionEvent event) throws IOException {
-        Packages selected = packageTable.getSelectionModel().getSelectedItem();
+       // Packages selected = packageTable.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageListView.fxml"));
         Parent loginView = loader.load();
         Scene homepageScene = new Scene(loginView);
         LoginViewController detailedController = loader.getController();
         
-        detailedController.initData(selected);
+        //detailedController.initData(selected);
         
         Stage stage = new Stage();
         stage.setScene(homepageScene);
@@ -91,5 +80,33 @@ public class LoginViewController {
     */
 
     public void initData(Packages pkgs) {
+        manager = (EntityManager) Persistence.createEntityManagerFactory("PunFXMLPU").createEntityManager();
+
+    }
+
+    @FXML
+    private void createUser(ActionEvent event) {
+        //get information
+        String user = username.getText();
+        String pass = password.getText();
+
+        Users person = new Users();
+        person.setUsername(user);
+        person.setPassword(pass);
+        try{
+        manager.getTransaction().begin();  
+        manager.persist(person);
+        manager.getTransaction().commit();
+        
+        }catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!");
+            alert.setHeaderText("Could not create user");
+            alert.setContentText("User was already created or missing information, try again");
+            alert.showAndWait();
+       
+        }
+        //go to profile view to add profile information
+        //go to package list
     }
 }

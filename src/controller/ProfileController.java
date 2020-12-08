@@ -174,5 +174,5 @@ public class ProfileController implements Initializable {
         previousScene = scene;
         backButton.setDisable(false);
     }
-    }
+}
 

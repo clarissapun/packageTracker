@@ -154,6 +154,23 @@ public class FXMLDocumentController implements Initializable {
         stage.setScene(profileViewScene);
         stage.show();
         
+       /*
+         Packages selected = packageTable.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));
+
+        Parent detailedModelView = loader.load();
+        Scene tableViewScene = new Scene(detailedModelView);
+        PackageDetailViewController detailedControlled = loader.getController();
+        detailedControlled.initData(selected);
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        detailedControlled.setPreviousScene(currentScene);
+
+        Stage stage = (Stage) currentScene.getWindow();
+        stage.setScene(tableViewScene);
+        stage.show();
+        */
+        
     }
     /*
     Implementing CRUD operations

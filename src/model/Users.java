@@ -17,18 +17,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Owner
+ * @author clarissapun
  */
 @Entity
 @Table(name = "USERS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
-    , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
-    , @NamedQuery(name = "Users.findByName", query = "SELECT u FROM Users u WHERE u.name = :name")
-    , @NamedQuery(name = "Users.findByPhoneNum", query = "SELECT u FROM Users u WHERE u.phoneNum = :phoneNum")
-    , @NamedQuery(name = "Users.findByAddress", query = "SELECT u FROM Users u WHERE u.address = :address")
-    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")})
+    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
+    @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
+    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
+    @NamedQuery(name = "Users.findByFirstname", query = "SELECT u FROM Users u WHERE u.firstname = :firstname"),
+    @NamedQuery(name = "Users.findByLastname", query = "SELECT u FROM Users u WHERE u.lastname = :lastname"),
+    @NamedQuery(name = "Users.findByAddress", query = "SELECT u FROM Users u WHERE u.address = :address"),
+    @NamedQuery(name = "Users.findByPhonenum", query = "SELECT u FROM Users u WHERE u.phonenum = :phonenum"),
+    @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,24 +38,24 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @Column(name = "USERNAME")
     private String username;
-    @Column(name = "NAME")
-    private String name;
-    @Column(name = "PHONENUM")
-    private String phoneNum;
+    @Column(name = "PASSWORD")
+    private String password;
+    @Column(name = "FIRSTNAME")
+    private String firstname;
+    @Column(name = "LASTNAME")
+    private String lastname;
     @Column(name = "ADDRESS")
     private String address;
+    @Column(name = "PHONENUM")
+    private String phonenum;
     @Column(name = "EMAIL")
     private String email;
 
     public Users() {
     }
 
-    public Users(String username, String name, String address, String phoneNum, String email) {
+    public Users(String username) {
         this.username = username;
-        this.name = name;
-        this.address = address;
-        this.phoneNum = phoneNum;
-        this.email = email;
     }
 
     public String getUsername() {
@@ -64,28 +66,49 @@ public class Users implements Serializable {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+    
+    public String getName(){
+        return firstname + " " + lastname;
+    }
+    
     public String getAddress() {
         return address;
     }
+    
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhoneNum() {
+        return phonenum;
+    }
+
+    public void setPhoneNum(String phonenum) {
+        this.phonenum = phonenum;
     }
 
     public String getEmail() {
@@ -120,6 +143,5 @@ public class Users implements Serializable {
     public String toString() {
         return "model.Users[ username=" + username + " ]";
     }
-
     
 }
