@@ -33,6 +33,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Packages;
+import model.Users;
 
 /**
  *
@@ -80,6 +81,24 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TableColumn<Packages, String> tableFromAddress = new TableColumn<>("from address");
+    
+    @FXML
+    private TableView<Users> userTable;
+    
+    @FXML 
+    private TableColumn<Users, String> tableUsername = new TableColumn<>("username");
+    
+    @FXML
+    private TableColumn<Users, String> tableName = new TableColumn<>("name");
+    
+    @FXML
+    private TableColumn<Users, String> tableAddress = new TableColumn<>("address");
+    
+    @FXML
+    private TableColumn<Users, String> tablePhoneNum = new TableColumn<>("phoneNum");
+    
+    @FXML
+    private TableColumn<Users, String> tableEmail = new TableColumn<>("email");
 
     @FXML
     private TextField findPackage;
@@ -104,6 +123,7 @@ public class FXMLDocumentController implements Initializable {
 
     Scene profileScene;
     private ObservableList<Packages> pkgData;
+    private ObservableList<Users> user;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -121,39 +141,16 @@ public class FXMLDocumentController implements Initializable {
     }
     
     void goToProf(ActionEvent event) throws IOException{
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Packages selected = packageTable.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Profileview.fxml"));
         Parent detailedModelView = loader.load();
-        Scene tableViewScene = new Scene(detailedModelView);
-        ProfileController detailedController = loader.getController();
-        
-        detailedController.initData(selected);
-        stage.setScene(profileScene);
-        
-        //create new stage
-        //Stage stage = new Stage();
+        Scene tableviewScene = new Scene(profileScene);
+        Stage stage = new Stage();
         stage.setScene(profileScene);
         stage.show();
-        }
-    
-    public void setPreviousScene(Scene scene) {
-        profileScene = scene;
-        profileButton.setDisable(false);
     }
-    @FXML
-    void goToProfile(ActionEvent event) {
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        //  option 2: get current stage -- from backbutton        
-        // Stage stage = (Stage)backButton.getScene().getWindow();
-        
-        if (profileScene != null) {
-            stage.setScene(profileScene);
-        }
-    }
-            
-    /*        Packages selected = packageTable.getSelectionModel().getSelectedItem();
+    /*
+        @FXML
+    void showDetails(ActionEvent event) throws IOException {
+        Packages selected = packageTable.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));
         Parent detailedModelView = loader.load();
         Scene tableViewScene = new Scene(detailedModelView);
@@ -164,8 +161,9 @@ public class FXMLDocumentController implements Initializable {
         // create a new state
         Stage stage = new Stage();
         stage.setScene(tableViewScene);
-        stage.show();*/
-
+        stage.show();
+    }
+    */
     /*
     Implementing CRUD operations
      */
