@@ -40,6 +40,9 @@ public class ProfileController implements Initializable {
 
     @FXML
     private AnchorPane usernameText;
+    
+    @FXML
+    private Text usernameField;
 
     @FXML
     private Text nameField;
@@ -62,21 +65,26 @@ public class ProfileController implements Initializable {
     @FXML
     private ImageView profileImage;
 
+    @FXML
+    private Label name;
+
+    @FXML
+    private Label address;
+
+    @FXML
+    private Label phoneNum;
+
+    @FXML
+    private Label email;
+
+    @FXML
+    private Label username;
+
     Scene previousScene;
     
     private Users user;
     @FXML
-    private Label username;
-    @FXML
-    private Label name;
-    @FXML
-    private Label address;
-    @FXML
-    private Label phoneNum;
-    @FXML
-    private Label email;
-    @FXML
-    private Users users;
+
  
     
     
@@ -160,10 +168,11 @@ public class ProfileController implements Initializable {
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        }
     }
-    /*
-
-    */
-}
+        }
+        public void setPreviousScene(Scene scene) {
+        previousScene = scene;
+        backButton.setDisable(false);
+    }
+    }
 

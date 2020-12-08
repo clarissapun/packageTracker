@@ -140,6 +140,7 @@ public class FXMLDocumentController implements Initializable {
         tableFromAddress.setCellValueFactory(new PropertyValueFactory<>("fromaddress"));
     }
     /*nvm I think I got it*/
+    @FXML
     void goToProf(ActionEvent event) throws IOException{
         Users selected = userTable.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ProfileView.fxml"));

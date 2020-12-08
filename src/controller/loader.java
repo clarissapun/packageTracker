@@ -5,10 +5,16 @@
  */
 package controller;
 
+import javafx.scene.Parent;
+
 /**
  *
  * @author Owner
  */
 class loader {
+
+    static Parent load() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
