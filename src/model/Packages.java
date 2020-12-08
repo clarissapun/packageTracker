@@ -118,7 +118,7 @@ public class Packages implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Packages[ id=" + id + " ]";
+        return "model.Packages[ id=" + id + " company=" + company + " to=" + toaddress + " from=" + fromaddress + " ]";
     }
     
 }

@@ -280,8 +280,21 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    void createPackages(ActionEvent event) {
-        Scanner input = new Scanner(System.in);
+    void createPackages(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddPackageView.fxml"));
+        Parent addPackageView = loader.load();
+        Scene addPackageScene = new Scene(addPackageView);
+        //AddPackageViewController viewController = loader.getController();
+
+        //viewController.initialize();
+
+        // create a new state
+        Stage stage = new Stage();
+        stage.setScene(addPackageScene);
+        stage.show();
+        
+        
+      /*  Scanner input = new Scanner(System.in);
 
         // read input from command line
         System.out.println("Enter ID:");
@@ -306,6 +319,7 @@ public class FXMLDocumentController implements Initializable {
 
         // save this package to database by calling Create operation        
         create(pkg);
+        */
     }
 
     @FXML
@@ -434,8 +448,9 @@ public class FXMLDocumentController implements Initializable {
             alert.setContentText("No package(s)");
             alert.showAndWait();
         }else{
+            packageTable.getItems().clear();
             packageTable.getItems().add(pkg);
-
+            packageTable.refresh();
         }
         //packageTable.getColumns().addAll(tableID, tableCompany, tableToAddress, tableFromAddress);
     }
