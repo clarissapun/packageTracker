@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -74,6 +75,8 @@ public class ProfileController implements Initializable {
     private Label phoneNum;
     @FXML
     private Label email;
+    @FXML
+    private Users users;
  
     
     
@@ -141,14 +144,26 @@ public class ProfileController implements Initializable {
 
     }
 
-    void initData(Users selected) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void initData(Users users) {
         user = users;
-        username.setText(users.getUsername().toString());
-        name.setText(users.getName().toString());
-        address.setText(users.getAddress.toString());
-        phoneNum.setText(users.getPhoneNum.toString());
-        email.setText(users.getEmail.toString());
+        username.setText(user.getUsername().toString());
+        name.setText(user.getName().toString());
+        address.setText(user.getAddress().toString());
+        phoneNum.setText(user.getPhoneNum().toString());
+        email.setText(user.getEmail().toString());
+        
+        try {
+            // path points to /resource/images/
+            String imagename = "/resource/images/profileStock.png";
+            Image profile = new Image(getClass().getResourceAsStream(imagename));
+            profileImage.setImage(profile);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
+    /*
+
+    */
 }
 

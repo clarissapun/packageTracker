@@ -48,8 +48,12 @@ public class Users implements Serializable {
     public Users() {
     }
 
-    public Users(String username) {
+    public Users(String username, String name, String address, String phoneNum, String email) {
         this.username = username;
+        this.name = name;
+        this.address = address;
+        this.phoneNum = phoneNum;
+        this.email = email;
     }
 
     public String getUsername() {
@@ -64,15 +68,15 @@ public class Users implements Serializable {
         return name;
     }
 
-    public void setName(String fname) {
-        this.name = fname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhoneNum() {
         return phoneNum;
     }
 
-    public void setPhoneNum(String lname) {
+    public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
 
