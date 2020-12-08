@@ -142,7 +142,9 @@ public class FXMLDocumentController implements Initializable {
     /*nvm I think I got it*/
     @FXML
     void goToProf(ActionEvent event) throws IOException{
-        Users selected = userTable.getSelectionModel().getSelectedItem();
+        Query query = manager.createNamedQuery("Users.findByUsername");
+        query.setParameter("username", "clarissapun");
+        Users selected = (Users) query.getSingleResult();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ProfileView.fxml"));
         Parent detailedModelView = loader.load();
         Scene profileViewScene = new Scene(detailedModelView);

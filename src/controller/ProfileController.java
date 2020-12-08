@@ -31,7 +31,7 @@ import model.Users;
 public class ProfileController implements Initializable {
 
     private EntityManager manager;
-    
+
     @FXML
     private ResourceBundle resources;
 
@@ -40,7 +40,7 @@ public class ProfileController implements Initializable {
 
     @FXML
     private AnchorPane usernameText;
-    
+
     @FXML
     private Text usernameField;
 
@@ -81,47 +81,44 @@ public class ProfileController implements Initializable {
     private Label username;
 
     Scene previousScene;
-    
+
     private Users user;
+
     @FXML
 
- 
-    
-    
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         manager = (EntityManager) Persistence.createEntityManagerFactory("PunFXMLPU").createEntityManager();
-    }    
-    
+    }
+
     @FXML
     public void editUser(ActionEvent event) {
-        
-                try {
-            
-            //Packages existingPkg = manager.find(Packages.class, userText.getId());
 
-            //if (existingPkg != null) {
-                // begin transaction
-            //    manager.getTransaction().begin();
+        try {
+
+            Users existingUser = manager.find(Users.class, usernameField.getText());
+
+            if (existingUser != null) {
+                manager.getTransaction().begin();
 
                 // update all atttributes
-            //    existingPkg.setId(user.getId());
-            //    existingPkg.setCompany(user.getCompany());
-             //   existingPkg.setToaddress(user.getToaddress());
-            //    existingPkg.setFromaddress(user.getFromaddress());
+                existingUser.setFirstname(name.getText());
+                existingUser.setAddress(address.getText());
+                existingUser.setPhoneNum(phoneNum.getText());
+                existingUser.setEmail(email.getText());
 
                 // end transaction
                 manager.getTransaction().commit();
-            ///}
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
-/*
+
+    
     public void setPreviousScene(Scene scene) {
         previousScene = scene;
         backButton.setDisable(false);
@@ -138,7 +135,7 @@ public class ProfileController implements Initializable {
             stage.setScene(previousScene);
         }
     }
-*/
+     
     @FXML
     void initialize() {
         assert usernameText != null : "fx:id=\"usernameText\" was not injected: check your FXML file 'ProfileView.fxml'.";
@@ -152,14 +149,13 @@ public class ProfileController implements Initializable {
 
     }
 
-    void initData(Users users) {
-        user = users;
+    void initData(Users user) {
         username.setText(user.getUsername().toString());
         name.setText(user.getName().toString());
         address.setText(user.getAddress().toString());
         phoneNum.setText(user.getPhoneNum().toString());
         email.setText(user.getEmail().toString());
-        
+
         try {
             // path points to /resource/images/
             String imagename = "/resource/images/profileStock.png";
@@ -168,11 +164,7 @@ public class ProfileController implements Initializable {
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-    }
         }
-        public void setPreviousScene(Scene scene) {
-        previousScene = scene;
-        backButton.setDisable(false);
     }
-}
 
+}

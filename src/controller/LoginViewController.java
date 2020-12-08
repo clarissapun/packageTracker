@@ -27,6 +27,7 @@ import model.Packages;
 import model.Users;
 
 public class LoginViewController {
+
     private EntityManager manager;
 
     @FXML
@@ -37,29 +38,27 @@ public class LoginViewController {
 
     @FXML
     private Button loginButton;
-    
+
     private TableView<Packages> packageTable;
 
-    
-    
     Scene homepageScene;
     @FXML
     private Button createButton;
 
     @FXML
     void login(ActionEvent event) throws IOException {
-       // Packages selected = packageTable.getSelectionModel().getSelectedItem();
+        // Packages selected = packageTable.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageListView.fxml"));
         Parent loginView = loader.load();
         Scene homepageScene = new Scene(loginView);
         LoginViewController detailedController = loader.getController();
-        
+
         //detailedController.initData(selected);
-        
         Stage stage = new Stage();
         stage.setScene(homepageScene);
         stage.show();
     }
+
     /*
         @FXML
     void goToProf(ActionEvent event) throws IOException{
@@ -77,7 +76,7 @@ public class LoginViewController {
         
     }
     /* 
-    */
+     */
 
     public void initData(Packages pkgs) {
         manager = (EntityManager) Persistence.createEntityManagerFactory("PunFXMLPU").createEntityManager();
@@ -93,18 +92,19 @@ public class LoginViewController {
         Users person = new Users();
         person.setUsername(user);
         person.setPassword(pass);
-        try{
-        manager.getTransaction().begin();  
-        manager.persist(person);
-        manager.getTransaction().commit();
-        
-        }catch(Exception e){
+        try {
+            //add user to database
+            manager.getTransaction().begin();
+            manager.persist(person);
+            manager.getTransaction().commit();
+
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!");
             alert.setHeaderText("Could not create user");
             alert.setContentText("User was already created or missing information, try again");
             alert.showAndWait();
-       
+
         }
         //go to profile view to add profile information
         //go to package list
