@@ -2,13 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
+            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/view/PackageListView.fxml</file>
+            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/view/ProfileView.fxml</file>
+            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/model/Littlemap.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/packagetracker/packageTracker.java</file>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/PackageListController.java</file>
+            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/AddPackageViewController.java</file>
         </group>
->>>>>>> 569927912af52ccfcd7a794108fa6e620c413275
     </open-files>
 </project-private>

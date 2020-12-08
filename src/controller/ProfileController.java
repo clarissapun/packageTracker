@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
@@ -36,30 +37,33 @@ public class ProfileController implements Initializable {
     private URL location;
 
     @FXML
-    private Text usernameText;
+    private AnchorPane usernameText;
 
     @FXML
-    private ImageView userImage;
+    private Text nameField;
 
     @FXML
-    private Text nameText;
+    private Text addressField;
 
     @FXML
-    private Text addressText;
+    private Text phoneField;
 
     @FXML
-    private Text phoneText;
-
-    @FXML
-    private Text emailText;
+    private Text emailField;
 
     @FXML
     private Button backButton;
 
     @FXML
     private Button editButton;
-    
+
+    @FXML
+    private ImageView profileImage;
+
     Scene previousScene;
+    
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -67,25 +71,27 @@ public class ProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         manager = (EntityManager) Persistence.createEntityManagerFactory("PunFXMLPU").createEntityManager();
     }    
+    
     @FXML
-    void editUser(Packages user) {
+    public void editUser(ActionEvent event) {
+        
                 try {
+            
+            //Packages existingPkg = manager.find(Packages.class, userText.getId());
 
-            Packages existingPkg = manager.find(Packages.class, user.getId());
-
-            if (existingPkg != null) {
+            //if (existingPkg != null) {
                 // begin transaction
-                manager.getTransaction().begin();
+            //    manager.getTransaction().begin();
 
                 // update all atttributes
-                existingPkg.setId(user.getId());
-                existingPkg.setCompany(user.getCompany());
-                existingPkg.setToaddress(user.getToaddress());
-                existingPkg.setFromaddress(user.getFromaddress());
+            //    existingPkg.setId(user.getId());
+            //    existingPkg.setCompany(user.getCompany());
+             //   existingPkg.setToaddress(user.getToaddress());
+            //    existingPkg.setFromaddress(user.getFromaddress());
 
                 // end transaction
                 manager.getTransaction().commit();
-            }
+            ///}
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -111,11 +117,11 @@ public class ProfileController implements Initializable {
     @FXML
     void initialize() {
         assert usernameText != null : "fx:id=\"usernameText\" was not injected: check your FXML file 'ProfileView.fxml'.";
-        assert userImage != null : "fx:id=\"userImage\" was not injected: check your FXML file 'ProfileView.fxml'.";
-        assert nameText != null : "fx:id=\"nameText\" was not injected: check your FXML file 'ProfileView.fxml'.";
-        assert addressText != null : "fx:id=\"addressText\" was not injected: check your FXML file 'ProfileView.fxml'.";
-        assert phoneText != null : "fx:id=\"phoneText\" was not injected: check your FXML file 'ProfileView.fxml'.";
-        assert emailText != null : "fx:id=\"emailText\" was not injected: check your FXML file 'ProfileView.fxml'.";
+        assert profileImage != null : "fx:id=\"userImage\" was not injected: check your FXML file 'ProfileView.fxml'.";
+        assert nameField != null : "fx:id=\"nameText\" was not injected: check your FXML file 'ProfileView.fxml'.";
+        assert addressField != null : "fx:id=\"addressText\" was not injected: check your FXML file 'ProfileView.fxml'.";
+        assert phoneField != null : "fx:id=\"phoneText\" was not injected: check your FXML file 'ProfileView.fxml'.";
+        assert emailField != null : "fx:id=\"emailText\" was not injected: check your FXML file 'ProfileView.fxml'.";
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ProfileView.fxml'.";
         assert editButton != null : "fx:id=\"editButton\" was not injected: check your FXML file 'ProfileView.fxml'.";
 
