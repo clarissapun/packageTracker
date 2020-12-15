@@ -5,12 +5,15 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +24,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import model.Users;
 
 /**
@@ -31,29 +35,18 @@ import model.Users;
 public class ProfileController implements Initializable {
 
     private EntityManager manager;
+    private Text nameField;
+    Scene previousScene;
+    private Users user;
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
+    private Text addressField;
+    
     @FXML
     private AnchorPane usernameText;
 
     @FXML
-    private Text usernameField;
-
-    @FXML
-    private Text nameField;
-
-    @FXML
-    private Text addressField;
-
-    @FXML
     private Text phoneField;
 
-    @FXML
     private Text emailField;
 
     @FXML
@@ -64,9 +57,6 @@ public class ProfileController implements Initializable {
 
     @FXML
     private ImageView profileImage;
-
-    @FXML
-    private Label name;
 
     @FXML
     private Label address;
@@ -80,11 +70,11 @@ public class ProfileController implements Initializable {
     @FXML
     private Label username;
 
-    Scene previousScene;
-
-    private Users user;
-
     @FXML
+    private Label fname;
+    @FXML
+    private Label lname;
+
 
     /**
      * Initializes the controller class.
@@ -95,27 +85,25 @@ public class ProfileController implements Initializable {
     }
 
     @FXML
-    public void editUser(ActionEvent event) {
+    public void editUser(ActionEvent event) throws IOException {
 
-        try {
+        Query query = manager.createNamedQuery("Users.findByUsername");
+        query.setParameter("username", "clarissapun");
+        Users selected = (Users) query.getSingleResult();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditProfileView.fxml"));
+        Parent detailedModelView = loader.load();
+        Scene profileViewScene = new Scene(detailedModelView);
+        EditProfileController detailedController = loader.getController();
+        
+        detailedController.initData(selected);
+        
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        detailedController.setPreviousScene(currentScene);
 
-            Users existingUser = manager.find(Users.class, usernameField.getText());
-
-            if (existingUser != null) {
-                manager.getTransaction().begin();
-
-                // update all atttributes
-                existingUser.setFirstname(name.getText());
-                existingUser.setAddress(address.getText());
-                existingUser.setPhoneNum(phoneNum.getText());
-                existingUser.setEmail(email.getText());
-
-                // end transaction
-                manager.getTransaction().commit();
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        Stage stage = (Stage) currentScene.getWindow();
+        stage.setScene(profileViewScene);
+        stage.show();
+        
     }
 
     
@@ -125,18 +113,21 @@ public class ProfileController implements Initializable {
 
     }
     @FXML
-    void goBack(ActionEvent event) {
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        //  option 2: get current stage -- from backbutton        
-        // Stage stage = (Stage)backButton.getScene().getWindow();
-        
-        if (previousScene != null) {
-            stage.setScene(previousScene);
-        }
+    void goBack(ActionEvent event) throws IOException {
+        //to package list
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/view/PackageListView.fxml"));
+        Parent detailedModelView = root.load();
+        Scene scene = new Scene(detailedModelView);
+        FXMLDocumentController detailedController = root.getController();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        //detailedController.setPreviousScene(currentScene);
+
+        Stage stage = (Stage) currentScene.getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
      
-    @FXML
     void initialize() {
         assert usernameText != null : "fx:id=\"usernameText\" was not injected: check your FXML file 'ProfileView.fxml'.";
         assert profileImage != null : "fx:id=\"userImage\" was not injected: check your FXML file 'ProfileView.fxml'.";
@@ -151,7 +142,8 @@ public class ProfileController implements Initializable {
 
     void initData(Users user) {
         username.setText(user.getUsername().toString());
-        name.setText(user.getName().toString());
+        fname.setText(user.getFirstname().toString());
+        lname.setText(user.getLastname().toString());
         address.setText(user.getAddress().toString());
         phoneNum.setText(user.getPhoneNum().toString());
         email.setText(user.getEmail().toString());

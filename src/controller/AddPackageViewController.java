@@ -1,12 +1,15 @@
 package controller; 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -41,7 +44,7 @@ public class AddPackageViewController implements Initializable {
     EntityManager manager;
 
     @FXML
-    void addPkg(ActionEvent event) {
+    void addPkg(ActionEvent event) throws IOException {
         String track = trackingNum.getText();
         String company = companytext.getText();
         String toaddress = totext.getText();
@@ -68,18 +71,22 @@ public class AddPackageViewController implements Initializable {
             alert.showAndWait();
        
         }
+        goBack(event);
     }
     
     @FXML
-    void goBack(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        //  option 2: get current stage -- from backbutton        
-        // Stage stage = (Stage)backButton.getScene().getWindow();
-        
-        if (previousScene != null) {
-            stage.setScene(previousScene);
-        }
+    void goBack(ActionEvent event) throws IOException {
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/view/PackageListView.fxml"));
+        Parent detailedModelView = root.load();
+        Scene scene = new Scene(detailedModelView);
+        FXMLDocumentController detailedController = root.getController();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        //detailedController.setPreviousScene(currentScene);
+
+        Stage stage = (Stage) currentScene.getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
     public void setPreviousScene(Scene scene) {
         previousScene = scene;

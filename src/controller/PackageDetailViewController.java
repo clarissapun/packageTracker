@@ -5,18 +5,23 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import model.Packages;
 
 /**
@@ -39,10 +44,13 @@ public class PackageDetailViewController implements Initializable {
     @FXML
     private Button backButton; 
     Scene previousScene;
-     
+    private EntityManager manager;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        manager = (EntityManager) Persistence.createEntityManagerFactory("PunFXMLPU").createEntityManager();
+
     }    
     public void initData(Packages pkgs) {
         pkg = pkgs;
@@ -68,15 +76,35 @@ public class PackageDetailViewController implements Initializable {
 
     }
     @FXML
-    public void goBack(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void goBack(ActionEvent event) throws IOException {
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/view/PackageListView.fxml"));
+        Parent detailedModelView = root.load();
+        Scene scene = new Scene(detailedModelView);
+        FXMLDocumentController detailedController = root.getController();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        //detailedController.setPreviousScene(currentScene);
+
+        Stage stage = (Stage) currentScene.getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void editPackage(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditPackageView.fxml"));
+        Parent detailedModelView = loader.load();
+        Scene profileViewScene = new Scene(detailedModelView);
+        EditPackageController detailedController = loader.getController();
         
-        //  option 2: get current stage -- from backbutton        
-        // Stage stage = (Stage)backButton.getScene().getWindow();
+        detailedController.initData(pkg);
         
-        if (previousScene != null) {
-            stage.setScene(previousScene);
-        }
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        detailedController.setPreviousScene(currentScene);
+
+        Stage stage = (Stage) currentScene.getWindow();
+        stage.setScene(profileViewScene);
+        stage.show();
     }
 }
   

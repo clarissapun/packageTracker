@@ -43,29 +43,14 @@ public class FXMLDocumentController implements Initializable {
 
     private EntityManager manager;
 
-    @FXML
-    private Button button;
 
     @FXML
     private Label label;
 
-    @FXML
-    private Button updatePackages;
-
-    @FXML
-    private Button readPackages;
 
     @FXML
     private Button createPackages;
 
-    @FXML
-    private Button deletePackages;
-
-    @FXML
-    private Button readToAndFromAddress;
-
-    @FXML
-    private Button readCompanyAndToAddress;
 
     @FXML
     private TableView<Packages> packageTable;
@@ -82,23 +67,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableColumn<Packages, String> tableFromAddress = new TableColumn<>("from address");
     
-    @FXML
-    private TableView<Users> userTable;
-    
-    @FXML 
-    private TableColumn<Users, String> tableUsername = new TableColumn<>("username");
-    
-    @FXML
-    private TableColumn<Users, String> tableName = new TableColumn<>("name");
-    
-    @FXML
-    private TableColumn<Users, String> tableAddress = new TableColumn<>("address");
-    
-    @FXML
-    private TableColumn<Users, String> tablePhoneNum = new TableColumn<>("phoneNum");
-    
-    @FXML
-    private TableColumn<Users, String> tableEmail = new TableColumn<>("email");
 
     @FXML
     private TextField findPackage;
@@ -115,8 +83,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button showDetailsP;
 
-    @FXML
-    private Button showDetailsB;
     
     @FXML
     private Button profileButton;
@@ -124,8 +90,9 @@ public class FXMLDocumentController implements Initializable {
     Scene profileScene;
     private ObservableList<Packages> pkgData;
     private ObservableList<Users> user;
-
     @FXML
+    private Button deleteButton;
+
     private void handleButtonAction(ActionEvent event) {
         System.out.println("clicked");
         ///label.setText("Hello World!");
@@ -138,6 +105,7 @@ public class FXMLDocumentController implements Initializable {
         tableCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
         tableToAddress.setCellValueFactory(new PropertyValueFactory<>("toaddress"));
         tableFromAddress.setCellValueFactory(new PropertyValueFactory<>("fromaddress"));
+        alert(readAll());
     }
     /*nvm I think I got it*/
     @FXML
@@ -152,10 +120,12 @@ public class FXMLDocumentController implements Initializable {
         
         detailedController.initData(selected);
         
-        Stage stage = new Stage();
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        detailedController.setPreviousScene(currentScene);
+
+        Stage stage = (Stage) currentScene.getWindow();
         stage.setScene(profileViewScene);
         stage.show();
-        
     }
     /*
     Implementing CRUD operations
@@ -187,42 +157,16 @@ public class FXMLDocumentController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddPackageView.fxml"));
         Parent addPackageView = loader.load();
         Scene addPackageScene = new Scene(addPackageView);
-        //AddPackageViewController viewController = loader.getController();
+        AddPackageViewController viewController = loader.getController();
 
         //viewController.initialize();
+        
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        viewController.setPreviousScene(currentScene);
 
-        // create a new state
-        Stage stage = new Stage();
+        Stage stage = (Stage) currentScene.getWindow();
         stage.setScene(addPackageScene);
         stage.show();
-        
-        
-      /*  Scanner input = new Scanner(System.in);
-
-        // read input from command line
-        System.out.println("Enter ID:");
-        int id = input.nextInt();
-
-        System.out.println("Enter Company:");
-        String company = input.next();
-
-        System.out.println("Enter To Address:");
-        String toAddress = input.nextLine();
-
-        System.out.println("Enter From Address:");
-        String fromAddress = input.nextLine();
-        // create a package instance
-        Packages pkg = new Packages();
-
-        // set properties
-        pkg.setId(id);
-        pkg.setCompany(company);
-        pkg.setToaddress(toAddress);
-        pkg.setFromaddress(fromAddress);
-
-        // save this package to database by calling Create operation        
-        create(pkg);
-        */
     }
 
 // Read Operations
@@ -258,7 +202,6 @@ public class FXMLDocumentController implements Initializable {
 
         return pkg;
     }
-    @FXML
     void readByID(ActionEvent event) {
         Scanner input = new Scanner(System.in);
 
@@ -300,7 +243,6 @@ public class FXMLDocumentController implements Initializable {
 
         return pkgs;
     }
-    @FXML
     void readByCompany(ActionEvent event) {
         Scanner input = new Scanner(System.in);
 
@@ -328,7 +270,6 @@ public class FXMLDocumentController implements Initializable {
 
         return pkgs;
     }
-    @FXML
     void readByToFromAddress(ActionEvent event) {
         // name and cpga
 
@@ -362,7 +303,6 @@ public class FXMLDocumentController implements Initializable {
 
         return pkgs;
     }
-    @FXML
     void readByCompanyToAddress(ActionEvent event) {
         // name and cpga
 
@@ -404,7 +344,6 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
- @FXML
     void updatePackages(ActionEvent event) {
         Scanner input = new Scanner(System.in);
 
@@ -436,6 +375,7 @@ public class FXMLDocumentController implements Initializable {
 
 // Delete operation
     public void delete(Packages pkg) {
+
         try {
             Packages exisitingPkg = manager.find(Packages.class, pkg.getId());
 
@@ -458,16 +398,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     void deletePackages(ActionEvent event) {
-        Scanner input = new Scanner(System.in);
-
-        // read input from command line
-        System.out.println("Enter ID:");
-        int id = input.nextInt();
-
-        Packages p = readById(id);
-        System.out.println("we are deleting this package: " + p.toString());
-        delete(p);
-
+        Packages selected = packageTable.getSelectionModel().getSelectedItem();
+        delete(selected);
+        alert(readAll());
     }
     
 //Search operations
@@ -517,7 +450,6 @@ public class FXMLDocumentController implements Initializable {
         return pkgs;
     }
 //read details
-    @FXML
     void showDetails(ActionEvent event) throws IOException {
         Packages selected = packageTable.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));

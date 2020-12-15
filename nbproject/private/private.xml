@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/ProfileController.java</file>
+            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/User.java</file>
+            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/EditProfileController.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/packagetracker/packageTracker.java</file>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/model/Users.java</file>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/PackageListController.java</file>
-            <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/loader.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/LoginViewController.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/packageTracker/src/controller/FXMLDocumentController.java</file>
         </group>
