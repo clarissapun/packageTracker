@@ -11,53 +11,78 @@
    <children>
       <Text layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile">
          <font>
-            <Font size="34.0" />
+            <Font name="Corbel" size="34.0" />
          </font>
       </Text>
-      <Text layoutX="82.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name">
+      <Text layoutX="82.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <Text layoutX="97.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <Text layoutX="110.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <Text layoutX="118.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <Text fx:id="phoneField" layoutX="159.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font size="14.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" layoutX="27.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Button fx:id="editButton" layoutX="312.0" layoutY="349.0" mnemonicParsing="false" onAction="#editUser" text="Edit" />
-      <ImageView fx:id="profileImage" fitHeight="120.0" fitWidth="160.0" layoutX="127.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="fname" layoutX="189.0" layoutY="188.0" text="Name" />
-      <Label layoutX="156.0" layoutY="245.0" />
-      <Label fx:id="address" layoutX="189.0" layoutY="268.0" text="Address" />
-      <Label fx:id="phoneNum" layoutX="190.0" layoutY="307.0" text="Phone Number" />
-      <Label fx:id="email" layoutX="191.0" layoutY="348.0" text="Email" />
-      <Label fx:id="username" layoutX="189.0" layoutY="150.0" text="Username" />
       <Text layoutX="81.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
-      <Text layoutX="82.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name">
+      <Text layoutX="82.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
-      <Label fx:id="lname" layoutX="189.0" layoutY="228.0" text="Name" />
+      <Button fx:id="backButton" layoutX="27.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBack" text="Back" >
+         <font>
+            <Font name="Corbel" size="13.0" />
+         </font></Button>
+      <Button fx:id="editButton" layoutX="336.0" layoutY="349.0" mnemonicParsing="false" onAction="#editUser" text="Edit" >
+          <font>
+            <Font name="Corbel" size="13.0" />
+         </font></Button>
+      <ImageView fx:id="profileImage" fitHeight="120.0" fitWidth="160.0" layoutX="127.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="fname" layoutX="189.0" layoutY="188.0" text="Name">
+          <font>
+            <Font name="Corbel" size="17.0" />
+         </font></Label>
+      <Label layoutX="156.0" layoutY="245.0" />
+      <Label fx:id="address" layoutX="189.0" layoutY="268.0" text="Address">
+      <font>
+            <Font name="Corbel" size="17.0" />
+         </font></Label>
+      <Label fx:id="phoneNum" layoutX="190.0" layoutY="307.0" text="Phone Number">
+      <font>
+            <Font name="Corbel" size="17.0" />
+         </font></Label>
+      <Label fx:id="email" layoutX="191.0" layoutY="348.0" text="Email">
+          <font>
+            <Font name="Corbel" size="17.0" />
+         </font></Label>
+      <Label fx:id="username" layoutX="189.0" layoutY="150.0" text="Username">
+          <font>
+            <Font name="Corbel" size="17.0" />
+         </font></Label>
+      
+      <Label fx:id="lname" layoutX="189.0" layoutY="228.0" text="Name">
+          <font>
+            <Font name="Corbel" size="17.0" />
+         </font></Label>
    </children>
 </AnchorPane>

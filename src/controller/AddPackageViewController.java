@@ -45,6 +45,7 @@ public class AddPackageViewController implements Initializable {
 
     @FXML
     void addPkg(ActionEvent event) throws IOException {
+        try{
         String track = trackingNum.getText();
         String company = companytext.getText();
         String toaddress = totext.getText();
@@ -59,19 +60,18 @@ public class AddPackageViewController implements Initializable {
         p.setCompany(company);
         p.setFromaddress(fromaddress);
         p.setToaddress(toaddress);
-        try{
         manager.getTransaction().begin();  
         manager.persist(p);
         manager.getTransaction().commit();
+        goBack(event);
         }catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!");
             alert.setHeaderText("Could not add package");
-            alert.setContentText("package was already added or information is incorrect, try again");
+            alert.setContentText("package was already added or missing information, try again");
             alert.showAndWait();
-       
         }
-        goBack(event);
+        
     }
     
     @FXML

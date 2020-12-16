@@ -341,7 +341,11 @@ public class FXMLDocumentController implements Initializable {
                 manager.getTransaction().commit();
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+           Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Error!");
+            alert.setHeaderText("could not update");
+            alert.setContentText("can't edit tracking number");
+            alert.showAndWait();
         }
     }
     void updatePackages(ActionEvent event) {
@@ -466,6 +470,7 @@ public class FXMLDocumentController implements Initializable {
     }
     @FXML
     void showDetailsPlace(ActionEvent event) throws IOException {
+        try{
         Packages selected = packageTable.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));
 
@@ -480,6 +485,13 @@ public class FXMLDocumentController implements Initializable {
         Stage stage = (Stage) currentScene.getWindow();
         stage.setScene(tableViewScene);
         stage.show();
+        }catch(Exception e){
+           Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Error!");
+            alert.setHeaderText("can't find selected");
+            alert.setContentText("please select a valid package");
+            alert.showAndWait();
+        }
     }
 
     void alert(List<Packages> pkgs) {
