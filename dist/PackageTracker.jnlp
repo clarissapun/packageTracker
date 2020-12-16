@@ -8,7 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="PackageTracker.jar" size="163472" download="eager" />
+=======
+    <jar href="PackageTracker.jar" size="162810" download="eager" />
+>>>>>>> 0845678d485f650d46f03207e112d5f305628f53
     <jar href="lib\derbyclient.jar" size="587986" download="eager" />
     <jar href="lib\eclipselink.jar" size="8478776" download="eager" />
     <jar href="lib\javax.persistence_2.1.0.v201304241213.jar" size="164637" download="eager" />
