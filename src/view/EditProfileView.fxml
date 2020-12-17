@@ -12,22 +12,22 @@
    <children>
       <Text layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile">
          <font>
-            <Font size="34.0" />
+            <Font name="Corbel" size="34.0" />
          </font>
       </Text>
       <Text layoutX="82.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <Text layoutX="97.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <Text layoutX="110.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <Text layoutX="118.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
@@ -37,21 +37,27 @@
       </Text>
       <Text fx:id="phoneField" layoutX="159.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font size="14.0" />
+            <Font name="Corbel" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" layoutX="27.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Button fx:id="editButton" layoutX="327.0" layoutY="349.0" mnemonicParsing="false" onAction="#saveChanges" text="Save" />
+      <Button fx:id="backButton" layoutX="27.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBack" text="Back" >
+          <font>
+            <Font name="Corbel" size="13.0" />
+         </font></Button>
+      <Button fx:id="editButton" layoutX="327.0" layoutY="349.0" mnemonicParsing="false" onAction="#saveChanges" text="Save" >
+          <font>
+            <Font name="Corbel" size="13.0" />
+         </font></Button>
       <ImageView fx:id="profileImage" fitHeight="120.0" fitWidth="160.0" layoutX="127.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="156.0" layoutY="245.0" />
       <Text layoutX="81.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <Text layoutX="82.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name">
          <font>
-            <Font size="17.0" />
+            <Font name="Corbel" size="17.0" />
          </font>
       </Text>
       <TextField fx:id="username" layoutX="189.0" layoutY="145.0" prefHeight="27.0" prefWidth="137.0" />

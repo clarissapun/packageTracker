@@ -113,7 +113,8 @@ public class EditProfileController implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-    void toProfile(ActionEvent event) throws IOException{
+    
+    private void toProfile(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ProfileView.fxml"));
         Parent detailedModelView = loader.load();
         Scene profileViewScene = new Scene(detailedModelView);
@@ -130,7 +131,7 @@ public class EditProfileController implements Initializable {
         stage.show();
     }
 
-    void initData(Users u){
+    public void initData(Users u){
         user = u;
         username.setText(user.getUsername());
         fname.setText(user.getFirstname());
@@ -150,7 +151,7 @@ public class EditProfileController implements Initializable {
         }
     }
 
-    void setPreviousScene(Scene scene) {
+    public void setPreviousScene(Scene scene) {
         previousScene = scene;
         backButton.setDisable(false);    
     }

@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -62,7 +63,7 @@ public class EditPackageController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PackageDetailView.fxml"));
         Parent detailedModelView = loader.load();
         Scene profileViewScene = new Scene(detailedModelView);
-        PackageDetailViewController detailedController = loader.getController();
+        PackageDetailController detailedController = loader.getController();
         Packages pkg = manager.find(Packages.class, p.getId());
 
         detailedController.initData(pkg);
@@ -95,11 +96,15 @@ public class EditPackageController implements Initializable {
             //load profile again
             goBack(event);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!");
+            alert.setHeaderText("could not update");
+            alert.setContentText("can't edit tracking number");
+            alert.showAndWait();
         }
     }
 
-    void initData(Packages pkg){
+    public void initData(Packages pkg){
         p = pkg;
         pkgId.setText("" + p.getId());
         pkgCompany.setText(p.getCompany());
@@ -116,7 +121,7 @@ public class EditPackageController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-    void setPreviousScene(Scene scene) {
+    public void setPreviousScene(Scene scene) {
         previousScene = scene;
         backButton.setDisable(false);   
     }
