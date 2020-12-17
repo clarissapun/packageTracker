@@ -2,13 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
+<<<<<<< HEAD
             <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/EditProfileController.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/ProfileController.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/AddPackageController.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/PackageDetailController.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/EditPackageController.java</file>
             <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/PackageListController.java</file>
+=======
+            <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/FXMLDocumentController.java</file>
+            <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/packagetracker/packageTracker.java</file>
+            <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/EditProfileController.java</file>
+            <file>file:/Users/clarissapun/NetBeansProjects/actualPackageTracker/src/controller/EditPackageController.java</file>
+>>>>>>> 9ff5feba3ca593a8ef691856ad71df9f12d36bbf
         </group>
+=======
+        <group/>
+>>>>>>> 0845678d485f650d46f03207e112d5f305628f53
     </open-files>
 </project-private>

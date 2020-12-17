@@ -8,11 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="396.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PackageListController">
-=======
-<AnchorPane id="AnchorPane" prefHeight="396.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
->>>>>>> 9ff5feba3ca593a8ef691856ad71df9f12d36bbf
     <children>
         <Label fx:id="label" layoutX="150.0" layoutY="98.0" minHeight="16" minWidth="69" />
       <Button fx:id="deleteButton" layoutX="97.0" layoutY="351.0" mnemonicParsing="false" onAction="#deletePackages" prefHeight="32.0" prefWidth="71.0" text="Delete">

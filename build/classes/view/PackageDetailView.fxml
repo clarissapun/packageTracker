@@ -6,11 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="349.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PackageDetailController">
-=======
-<AnchorPane id="AnchorPane" prefHeight="349.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PackageDetailViewController">
->>>>>>> 9ff5feba3ca593a8ef691856ad71df9f12d36bbf
    <children>
       <Label layoutX="66.0" layoutY="9.0" text="Package Details">
          <font>

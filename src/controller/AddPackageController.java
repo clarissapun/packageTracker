@@ -44,7 +44,11 @@ public class AddPackageController implements Initializable {
     EntityManager manager;
 
     @FXML
+<<<<<<< HEAD:src/controller/AddPackageController.java
     private void addPkg(ActionEvent event) throws IOException {
+=======
+    void addPkg(ActionEvent event) throws IOException {
+>>>>>>> 9ff5feba3ca593a8ef691856ad71df9f12d36bbf:src/controller/AddPackageViewController.java
         try{
         String track = trackingNum.getText();
         String company = companytext.getText();

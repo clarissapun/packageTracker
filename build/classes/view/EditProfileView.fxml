@@ -8,14 +8,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="usernameText" prefHeight="396.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditProfileController">
+<AnchorPane id="AnchorPane" fx:id="usernameText" prefHeight="396.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditProfileController">
    <children>
       <Text layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile">
          <font>
             <Font name="Corbel" size="34.0" />
          </font>
       </Text>
-      <Text layoutX="82.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+      <Text layoutX="82.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name">
          <font>
             <Font name="Corbel" size="17.0" />
          </font>
@@ -40,19 +40,11 @@
             <Font name="Corbel" size="14.0" />
          </font>
       </Text>
-<<<<<<< HEAD
       <Button fx:id="backButton" layoutX="27.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBack" text="Back" >
           <font>
             <Font name="Corbel" size="13.0" />
          </font></Button>
       <Button fx:id="editButton" layoutX="327.0" layoutY="349.0" mnemonicParsing="false" onAction="#saveChanges" text="Save" >
-=======
-      <Button fx:id="backButton" layoutX="27.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBack" text="Back">
-          <font>
-            <Font name="Corbel" size="13.0" />
-         </font></Button>
-      <Button fx:id="editButton" layoutX="327.0" layoutY="349.0" mnemonicParsing="false" onAction="#saveChanges" text="Save">
->>>>>>> 9ff5feba3ca593a8ef691856ad71df9f12d36bbf
           <font>
             <Font name="Corbel" size="13.0" />
          </font></Button>
@@ -63,7 +55,7 @@
             <Font name="Corbel" size="17.0" />
          </font>
       </Text>
-      <Text layoutX="82.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+      <Text layoutX="82.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name">
          <font>
             <Font name="Corbel" size="17.0" />
          </font>
